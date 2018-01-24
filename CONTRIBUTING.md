@@ -1,4 +1,4 @@
-# Contributing to docker-bitcoind
+# Contributing to docker-garlicoind
 
 Community contributions are welcome and help move the project along.  Please review this document before sending any pull requests.
 
