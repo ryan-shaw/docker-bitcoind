@@ -1,12 +1,12 @@
 garlicoind for Docker
 ===================
 
-[![Docker Stars](https://img.shields.io/docker/stars/ryan-shaw/garlicoind.svg)](https://hub.docker.com/r/ryan-shaw/garlicoind/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/ryan-shaw/garlicoind.svg)](https://hub.docker.com/r/ryan-shaw/garlicoind/)
-[![Build Status](https://travis-ci.org/ryan-shaw/docker-garlicoind.svg?branch=master)](https://travis-ci.org/ryan-shaw/docker-garlicoind/)
-[![ImageLayers](https://images.microbadger.com/badges/image/ryan-shaw/garlicoind.svg)](https://microbadger.com/#/images/ryan-shaw/garlicoind)
+[![Docker Stars](https://img.shields.io/docker/stars/ryanshaw/garlicoind.svg)](https://hub.docker.com/r/ryanshaw/garlicoind/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/ryanshaw/garlicoind.svg)](https://hub.docker.com/r/ryanshaw/garlicoind/)
+[![Build Status](https://travis-ci.org/ryanshaw/docker-garlicoind.svg?branch=master)](https://travis-ci.org/ryanshaw/docker-garlicoind/)
+[![ImageLayers](https://images.microbadger.com/badges/image/ryanshaw/garlicoind.svg)](https://microbadger.com/#/images/ryanshaw/garlicoind)
 
-Docker image that runs the Bitcoin garlicoind node in a container for easy deployment.
+Docker image that runs the Garlicoin garlicoind node in a container for easy deployment.
 
 
 Requirements
@@ -25,16 +25,16 @@ Quick Start
 1. Create a `garlicoind-data` volume to persist the garlicoind blockchain data, should exit immediately.  The `garlicoind-data` container will store the blockchain when the node container is recreated (software upgrade, reboot, etc):
 
         docker volume create --name=garlicoind-data
-        docker run -v garlicoind-data:/bitcoin --name=garlicoind-node -d \
+        docker run -v garlicoind-data:/garlicoin --name=garlicoind-node -d \
             -p 42069:42069 \
             -p 127.0.0.1:42068:42068 \
-            ryan-shaw/garlicoind
+            ryanshaw/garlicoind
 
 2. Verify that the container is running and garlicoind node is downloading the blockchain
 
         $ docker ps
         CONTAINER ID        IMAGE                         COMMAND             CREATED             STATUS              PORTS                                              NAMES
-        d0e1076b2dca        ryan-shaw/garlicoind:latest     "grlc_oneshot"       2 seconds ago       Up 1 seconds        127.0.0.1:42068->42068/tcp, 0.0.0.0:42069->42069/tcp   garlicoind-node
+        d0e1076b2dca        ryanshaw/garlicoind:latest     "grlc_oneshot"       2 seconds ago       Up 1 seconds        127.0.0.1:42068->42068/tcp, 0.0.0.0:42069->42069/tcp   garlicoind-node
 
 3. You can then access the daemon's output thanks to the [docker logs command]( https://docs.docker.com/reference/commandline/cli/#logs)
 
