@@ -38,7 +38,7 @@ EXPOSE 42068 42069 42070 42075
 
 WORKDIR /garlicoin
 
-COPY --from=build_step /garlicoin/src/garlicoind /usr/local/bin/
+COPY --from=build_step /garlicoin/src/garlicoin* /usr/local/bin/
 COPY --from=build_step /usr/lib/x86_64-linux-gnu/ /usr/lib/x86_64-linux-gnu/
 COPY --from=build_step /usr/lib/libdb_cxx-4.8.so /usr/lib/libdb_cxx-4.8.so
 COPY --from=build_step /lib/x86_64-linux-gnu/libcrypto.so.1.0.0 /lib/x86_64-linux-gnu/libcrypto.so.1.0.0
