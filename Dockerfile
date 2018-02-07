@@ -1,3 +1,5 @@
+ARG REPO=https://github.com/GarlicoinOrg/Garlicoin.git
+
 FROM ubuntu:xenial AS build_step
 LABEL maintainer Ryan Shaw <ryan@rshaw.me>
 
@@ -20,7 +22,7 @@ RUN \
 	&& add-apt-repository ppa:bitcoin/bitcoin \ 
 	&& apt-get update \
 	&& apt-get install -yq libdb4.8-dev libdb4.8++-dev \
-    && git clone https://github.com/GarlicoinOrg/Garlicoin.git /garlicoin
+    && git clone ${REPO} /garlicoin
 
 RUN set -ex ; \
 	cd /garlicoin ; \
