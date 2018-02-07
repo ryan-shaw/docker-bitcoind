@@ -14,6 +14,7 @@ if [ ! -e "$HOME/.garlicoin/garlicoin.conf" ]; then
 disablewallet=${DISABLEWALLET:-1}
 printtoconsole=${PRINTTOCONSOLE:-1}
 rpcuser=${RPCUSER:-garlicoinrpc}
+rpcallowip=${RPCALLOWIP:-172.17.0.0/24}
 rpcpassword=${RPCPASSWORD:-`dd if=/dev/urandom bs=33 count=1 2>/dev/null | base64`}
 EOF
 
