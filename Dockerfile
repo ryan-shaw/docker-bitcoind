@@ -1,6 +1,5 @@
-ARG REPO=https://github.com/GarlicoinOrg/Garlicoin.git
-
 FROM ubuntu:xenial AS build_step
+ARG REPO=https://github.com/GarlicoinOrg/Garlicoin.git
 LABEL maintainer Ryan Shaw <ryan@rshaw.me>
 
 ENV HOME /garlicoin
