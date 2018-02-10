@@ -1,5 +1,6 @@
 FROM ubuntu:xenial AS build_step
 ARG REPO=https://github.com/GarlicoinOrg/Garlicoin.git
+ARG BRANCH=master
 LABEL maintainer Ryan Shaw <ryan@rshaw.me>
 
 ENV HOME /garlicoin
@@ -20,24 +21,26 @@ RUN \
 		software-properties-common \ 
 	&& add-apt-repository ppa:bitcoin/bitcoin \ 
 	&& apt-get update \
-	&& apt-get install -yq libdb4.8-dev libdb4.8++-dev \
-    && git clone ${REPO} /garlicoin
+	&& apt-get install -yq libdb4.8-dev libdb4.8++-dev
+
+RUN git clone -b ${BRANCH} ${REPO} /garlicoin && echo 1
 
 RUN set -ex ; \
 	cd /garlicoin ; \
+    ldconfig ; \
 	./autogen.sh ; \
-	./configure --without-gui ; \ 
-	make
+	./configure --without-gui --disable-tests --disable-bench ; \ 
+	make -j2
 
 FROM ubuntu:xenial
 
 ADD ./bin /usr/local/bin
 
-VOLUME ["/garlicoin"]
+VOLUME ["/root/.garlicoin"]
 
 EXPOSE 42068 42069 42070 42075
 
-WORKDIR /garlicoin
+WORKDIR /root/.garlicoin
 
 COPY --from=build_step /garlicoin/src/garlicoin* /usr/local/bin/
 COPY --from=build_step /usr/lib/x86_64-linux-gnu/ /usr/lib/x86_64-linux-gnu/
