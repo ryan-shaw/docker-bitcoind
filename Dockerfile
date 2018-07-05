@@ -23,7 +23,8 @@ RUN \
 	&& apt-get update \
 	&& apt-get install -yq libdb4.8-dev libdb4.8++-dev
 
-RUN git clone -b ${BRANCH} ${REPO} /garlicoin && echo 1
+ADD https://api.github.com/repos/GarlicoinOrg/Garlicoin/compare/master...HEAD /dev/null
+RUN git clone -b ${BRANCH} ${REPO} /garlicoin
 
 RUN set -ex ; \
 	cd /garlicoin ; \
