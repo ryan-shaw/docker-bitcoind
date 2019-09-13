@@ -18,6 +18,7 @@ RUN \
         libevent-dev        \
         bsdmainutils        \
         libboost-all-dev    \
+        libzmq3-dev         \
 		software-properties-common \ 
 	&& add-apt-repository ppa:bitcoin/bitcoin \ 
 	&& apt-get update \
